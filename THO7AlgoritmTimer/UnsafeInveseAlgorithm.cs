@@ -30,13 +30,14 @@ namespace THO7AlgoritmTimerApplication
 				byte* start = (byte*)data.Scan0.ToPointer();
 				for (int i = 0; i < data.Stride; i++)
 				{
+					if(alpha && i%bytesPerPixel == bytesPerPixel-1)
+					{
+						continue;
+					}
 					for (int j = 0; j < data.Height; j++)
 					{
 						int current = (j*data.Stride)+i;
-						if (!alpha ||i%bytesPerPixel != bytesPerPixel-1)
-						{
-							*(start+current) = (byte)(*(start+current)^0xff);
-						}
+						*(start+current) = (byte)(*(start+current)^0xff);
 					}
 				}
 			}
