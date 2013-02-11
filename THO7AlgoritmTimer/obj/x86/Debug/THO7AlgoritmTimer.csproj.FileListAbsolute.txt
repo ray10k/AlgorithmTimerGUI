@@ -1,0 +1,9 @@
+D:\Git\HOME\AlgorithmTimerGUI\THO7AlgoritmTimer\bin\Debug\THO8AlgoritmTimer.exe
+D:\Git\HOME\AlgorithmTimerGUI\THO7AlgoritmTimer\bin\Debug\THO8AlgoritmTimer.pdb
+D:\Git\HOME\AlgorithmTimerGUI\THO7AlgoritmTimer\obj\x86\Debug\THO7AlgoritmTimer.csprojResolveAssemblyReference.cache
+D:\Git\HOME\AlgorithmTimerGUI\THO7AlgoritmTimer\obj\x86\Debug\THO7AlgoritmTimerApplication.ImagePreviewForm.resources
+D:\Git\HOME\AlgorithmTimerGUI\THO7AlgoritmTimer\obj\x86\Debug\THO7AlgoritmTimerApplication.MainForm.resources
+D:\Git\HOME\AlgorithmTimerGUI\THO7AlgoritmTimer\obj\x86\Debug\THO7AlgoritmTimerApplication.Properties.Resources.resources
+D:\Git\HOME\AlgorithmTimerGUI\THO7AlgoritmTimer\obj\x86\Debug\THO7AlgoritmTimer.csproj.GenerateResource.Cache
+D:\Git\HOME\AlgorithmTimerGUI\THO7AlgoritmTimer\obj\x86\Debug\THO8AlgoritmTimer.exe
+D:\Git\HOME\AlgorithmTimerGUI\THO7AlgoritmTimer\obj\x86\Debug\THO8AlgoritmTimer.pdb
