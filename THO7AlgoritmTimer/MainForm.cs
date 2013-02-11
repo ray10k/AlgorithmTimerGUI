@@ -27,6 +27,7 @@ namespace THO7AlgoritmTimerApplication
             AlgorithmList.Add(new SafeBlackAlgorithm("safe Black"));
             AlgorithmList.Add(new UnsafeBlackAlgorithm("UNSAFE Black"));
 			AlgorithmList.Add(new SafeInverseAlgorithm("safe Inverse"));
+			AlgorithmList.Add(new UnsafeInveseAlgorithm("UNSAFE inverse"));
             //Insert new Algorithms here
             /*          ^
             *          /|\

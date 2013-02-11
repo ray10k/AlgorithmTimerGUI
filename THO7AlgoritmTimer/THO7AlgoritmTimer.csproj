@@ -90,6 +90,7 @@
     <Compile Include="FlipAlgorithm.cs" />
     <Compile Include="SafeBlackAlgorithm.cs" />
     <Compile Include="UnsafeBlackAlgorithm.cs" />
+    <Compile Include="UnsafeInveseAlgorithm.cs" />
     <Compile Include="VisionAlgorithm.cs" />
     <EmbeddedResource Include="ImagePreviewForm.resx">
       <DependentUpon>ImagePreviewForm.cs</DependentUpon>
