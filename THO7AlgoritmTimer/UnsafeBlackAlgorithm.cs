@@ -22,8 +22,7 @@ namespace THO7AlgoritmTimerApplication
             BitmapData rawData = retval.LockBits(new Rectangle(0,0,retval.Width,retval.Height),
                 ImageLockMode.ReadWrite, retval.PixelFormat);
 
-			byte bytesPerPixel = GetBytesPerPixel(retval.PixelFormat);
-			bool alpha = hasAlpha(retval.PixelFormat);
+			byte bytesPerPixel = getBytesPerPixel(retval.PixelFormat);
 			int pixels = retval.Height * retval.Width;
 
             unsafe
@@ -93,6 +92,7 @@ namespace THO7AlgoritmTimerApplication
 
             return retval;
         }
+
         private byte getBytesPerPixel(PixelFormat p)
         {
             byte retval = 0;
@@ -119,78 +119,5 @@ namespace THO7AlgoritmTimerApplication
             return retval;
         }
 
-        private byte GetBitsPerPixel(PixelFormat pixelFormat)
-        {
-            byte retval = 0;
-            switch (pixelFormat)
-            {
-                case PixelFormat.Format1bppIndexed:
-                    retval = 1;
-                    break;
-                case PixelFormat.Format4bppIndexed:
-                    retval = 4;
-                    break;
-                case PixelFormat.Format16bppArgb1555:
-                case PixelFormat.Format16bppGrayScale:
-                    retval = 5;
-                    break;
-                case PixelFormat.Format24bppRgb:
-                case PixelFormat.Format32bppArgb:
-                case PixelFormat.Format32bppPArgb:
-                case PixelFormat.Format32bppRgb:
-                case PixelFormat.Format8bppIndexed:
-                    retval = 8;
-                    break;
-                case PixelFormat.Format48bppRgb:
-                case PixelFormat.Format64bppArgb:
-                case PixelFormat.Format64bppPArgb:
-                    retval = 16;
-                    break;
-            }
-
-            return retval;
-        }
-		private bool hasAlpha(PixelFormat pixelFormat)
-		{
-			bool retval = false;
-
-			switch (pixelFormat)
-			{
-				case PixelFormat.Format16bppArgb1555:
-				case PixelFormat.Format32bppArgb:
-				case PixelFormat.Format32bppPArgb:
-				case PixelFormat.Format64bppArgb:
-				case PixelFormat.Format64bppPArgb:
-					retval = true;
-					break;
-			}
-
-			return retval;
-		}
-
-		private byte GetBytesPerPixel(PixelFormat pixelFormat)
-		{
-			byte retval = 0;
-			switch (pixelFormat)
-			{
-				case PixelFormat.Format24bppRgb:
-					retval = 3;
-					break;
-				case PixelFormat.Format32bppArgb:
-				case PixelFormat.Format32bppPArgb:
-				case PixelFormat.Format32bppRgb:
-					retval = 4;
-					break;
-				case PixelFormat.Format48bppRgb:
-					retval = 6;
-					break;
-				case PixelFormat.Format64bppArgb:
-				case PixelFormat.Format64bppPArgb:
-					retval = 8;
-					break;
-			}
-
-			return retval;
-		}
     }
 }

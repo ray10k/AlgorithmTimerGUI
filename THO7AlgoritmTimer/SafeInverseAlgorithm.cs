@@ -22,7 +22,7 @@ namespace THO7AlgoritmTimerApplication
 			BitmapData data = retval.LockBits(new Rectangle(0, 0, retval.Width, retval.Height),
 				ImageLockMode.ReadWrite, retval.PixelFormat);
 
-			byte bytesPerPixel = GetBytesPerPixel(retval.PixelFormat);
+			byte bytesPerPixel = getBytesPerPixel(retval.PixelFormat);
 			bool alpha = hasAlpha(retval.PixelFormat);
 
 			int totalBytes = data.Stride *data.Height;
@@ -103,7 +103,7 @@ namespace THO7AlgoritmTimerApplication
 			return retval;
 		}
 
-		private byte GetBytesPerPixel(PixelFormat pixelFormat)
+		private byte getBytesPerPixel(PixelFormat pixelFormat)
 		{
 			byte retval = 0;
 			switch (pixelFormat)

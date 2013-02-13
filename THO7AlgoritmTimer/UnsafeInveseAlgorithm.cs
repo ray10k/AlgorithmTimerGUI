@@ -23,7 +23,6 @@ namespace THO7AlgoritmTimerApplication
 				ImageLockMode.ReadWrite, retval.PixelFormat);
 
 			byte bytesPerPixel = GetBytesPerPixel(retval.PixelFormat);
-			bool alpha = hasAlpha(retval.PixelFormat);
 			int pixels = retval.Height * retval.Width;
 
 			unsafe
@@ -90,23 +89,6 @@ namespace THO7AlgoritmTimerApplication
 			return retval;
 		}
 
-		private bool hasAlpha(PixelFormat pixelFormat)
-		{
-			bool retval = false;
-
-			switch (pixelFormat)
-			{
-				case PixelFormat.Format16bppArgb1555:
-				case PixelFormat.Format32bppArgb:
-				case PixelFormat.Format32bppPArgb:
-				case PixelFormat.Format64bppArgb:
-				case PixelFormat.Format64bppPArgb:
-					retval = true;
-					break;
-			}
-
-			return retval;
-		}
 
 		private byte GetBytesPerPixel(PixelFormat pixelFormat)
 		{

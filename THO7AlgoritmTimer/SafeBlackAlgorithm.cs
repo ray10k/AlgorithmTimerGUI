@@ -15,7 +15,6 @@ namespace THO7AlgoritmTimerApplication
 
         }
 
-
         public override Bitmap DoAlgorithm(Bitmap original)
         {
             Bitmap retval = new Bitmap(original);
@@ -85,23 +84,6 @@ namespace THO7AlgoritmTimerApplication
             return retval;
         }
 
-        private bool isAlphaImage(PixelFormat pixelFormat)
-        {
-            bool retval = false;
-            switch (pixelFormat)
-            {
-                case PixelFormat.Format32bppArgb:
-                case PixelFormat.Format32bppPArgb:
-                case PixelFormat.Format64bppArgb:
-                case PixelFormat.Format64bppPArgb:
-                case PixelFormat.Format16bppArgb1555:
-                    retval = true;
-                    break;
-            }
-
-            return retval;
-        }
-
 		private byte getBytesPerPixel(PixelFormat p)
 		{
 			byte retval = 0;
@@ -124,40 +106,7 @@ namespace THO7AlgoritmTimerApplication
 					retval = 8;
 					break;
 			}
-
 			return retval;
 		}
-
-        private byte GetBitsPerPixel(PixelFormat pixelFormat)
-        {
-            byte retval = 0;
-            switch (pixelFormat)
-            {
-                case PixelFormat.Format1bppIndexed:
-                    retval = 1;
-                    break;
-                case PixelFormat.Format4bppIndexed:
-                    retval = 4;
-                    break;
-                case PixelFormat.Format16bppArgb1555:
-                case PixelFormat.Format16bppGrayScale:
-                    retval = 5;
-                    break;
-                case PixelFormat.Format24bppRgb:
-                case PixelFormat.Format32bppArgb:
-                case PixelFormat.Format32bppPArgb:
-                case PixelFormat.Format32bppRgb:
-                case PixelFormat.Format8bppIndexed:
-                    retval = 8;
-                    break;
-                case PixelFormat.Format48bppRgb:
-                case PixelFormat.Format64bppArgb:
-                case PixelFormat.Format64bppPArgb:
-                    retval = 16;
-                    break;
-            }
-
-            return retval;
-        }
-    }
+   }
 }
