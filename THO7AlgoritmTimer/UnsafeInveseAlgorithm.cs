@@ -19,7 +19,7 @@ namespace THO7AlgoritmTimerApplication
 		{
 			Bitmap retval = new Bitmap(sourceImage);
 
-			BitmapData data = retval.LockBits(new Rectangle(0, 0, retval.Width, retval.Height),
+			BitmapData rawData = retval.LockBits(new Rectangle(0, 0, retval.Width, retval.Height),
 				ImageLockMode.ReadWrite, retval.PixelFormat);
 
 			byte bytesPerPixel = GetBytesPerPixel(retval.PixelFormat);
@@ -27,7 +27,7 @@ namespace THO7AlgoritmTimerApplication
 
 			unsafe
 			{
-				byte* start = (byte*)data.Scan0.ToPointer();
+				byte* start = (byte*)rawData.Scan0.ToPointer();
 				if (bytesPerPixel == 2)
 				{
 					for (int i = 0; i < pixels; i++)
@@ -84,7 +84,7 @@ namespace THO7AlgoritmTimerApplication
 					}
 				}
 			}
-			retval.UnlockBits(data);
+			retval.UnlockBits(rawData);
 			
 			return retval;
 		}

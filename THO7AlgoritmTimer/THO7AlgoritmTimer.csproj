@@ -77,6 +77,7 @@
     <Compile Include="ImagePreviewForm.Designer.cs">
       <DependentUpon>ImagePreviewForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SafeGreyAlgorithm.cs" />
     <Compile Include="SafeInverseAlgorithm.cs" />
     <Compile Include="RotateAlgorithm.cs" />
     <Compile Include="MainForm.cs">

@@ -19,17 +19,17 @@ namespace THO7AlgoritmTimerApplication
 		{
 			Bitmap retval = new Bitmap(sourceImage);
 
-			BitmapData data = retval.LockBits(new Rectangle(0, 0, retval.Width, retval.Height),
+			BitmapData rawData = retval.LockBits(new Rectangle(0, 0, retval.Width, retval.Height),
 				ImageLockMode.ReadWrite, retval.PixelFormat);
 
 			byte bytesPerPixel = getBytesPerPixel(retval.PixelFormat);
 			bool alpha = hasAlpha(retval.PixelFormat);
 
-			int totalBytes = data.Stride *data.Height;
+			int totalBytes = rawData.Stride *rawData.Height;
 			int pixels = retval.Height * retval.Width;
 			byte[] newPixels = new byte[totalBytes];
 
-			System.Runtime.InteropServices.Marshal.Copy(data.Scan0,newPixels,0,totalBytes);
+			System.Runtime.InteropServices.Marshal.Copy(rawData.Scan0,newPixels,0,totalBytes);
 
 			if (bytesPerPixel == 3)
 			{
@@ -78,9 +78,9 @@ namespace THO7AlgoritmTimerApplication
 				}
 			}
 
-			System.Runtime.InteropServices.Marshal.Copy(newPixels, 0, data.Scan0, totalBytes);
+			System.Runtime.InteropServices.Marshal.Copy(newPixels, 0, rawData.Scan0, totalBytes);
 
-			retval.UnlockBits(data);
+			retval.UnlockBits(rawData);
 			
 			return retval;
 		}
