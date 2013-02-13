@@ -22,23 +22,63 @@ namespace THO7AlgoritmTimerApplication
 			BitmapData data = retval.LockBits(new Rectangle(0, 0, retval.Width, retval.Height),
 				ImageLockMode.ReadWrite, retval.PixelFormat);
 
-			byte pixelBytes = GetBytesPerPixel(retval.PixelFormat);
+			byte bytesPerPixel = GetBytesPerPixel(retval.PixelFormat);
 			bool alpha = hasAlpha(retval.PixelFormat);
 
 			int totalBytes = data.Stride *data.Height;
+			int pixels = retval.Height * retval.Width;
+			byte[] newPixels = new byte[totalBytes];
 
-			byte[] imageBytes = new byte[totalBytes];
-			byte max = 255;
+			System.Runtime.InteropServices.Marshal.Copy(data.Scan0,newPixels,0,totalBytes);
 
-			System.Runtime.InteropServices.Marshal.Copy(data.Scan0,imageBytes,0,totalBytes);
-			for (int i = 0; i < totalBytes; i++)
+			if (bytesPerPixel == 3)
 			{
-				if (!alpha || i % pixelBytes != (pixelBytes - 1))
+				for (int i = 0; i < pixels; i++)
 				{
-					imageBytes[i] = (byte)(max - imageBytes[i]);
+					int current = i * 3;
+					newPixels[current] ^= 0xff;
+					newPixels[current + 1] ^= 0xff;
+					newPixels[current + 2] ^= 0xff;
 				}
 			}
-			System.Runtime.InteropServices.Marshal.Copy(imageBytes, 0, data.Scan0, totalBytes);
+			else if (bytesPerPixel == 4)
+			{
+				for (int i = 0; i < pixels; i++)
+				{
+					int current = i * 4;
+					newPixels[current] ^= 0xff;
+					newPixels[current + 1] ^= 0xff;
+					newPixels[current + 2] ^= 0xff;
+				}
+			}
+			else if (bytesPerPixel == 6)
+			{
+				for (int i = 0; i < pixels; i++)
+				{
+					int current = i * 6;
+					newPixels[current] ^= 0xff;
+					newPixels[current + 1] ^= 0xff;
+					newPixels[current + 2] ^= 0xff;
+					newPixels[current + 3] ^= 0xff;
+					newPixels[current + 4] ^= 0xff;
+					newPixels[current + 5] ^= 0xff;
+				}
+			}
+			else if (bytesPerPixel == 8)
+			{
+				for (int i = 0; i < pixels; i++)
+				{
+					int current = i * 8;
+					newPixels[current] ^= 0xff;
+					newPixels[current + 1] ^= 0xff;
+					newPixels[current + 2] ^= 0xff;
+					newPixels[current + 3] ^= 0xff;
+					newPixels[current + 4] ^= 0xff;
+					newPixels[current + 5] ^= 0xff;
+				}
+			}
+
+			System.Runtime.InteropServices.Marshal.Copy(newPixels, 0, data.Scan0, totalBytes);
 
 			retval.UnlockBits(data);
 			

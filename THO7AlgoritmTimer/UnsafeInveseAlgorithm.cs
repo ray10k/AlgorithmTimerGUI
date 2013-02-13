@@ -24,20 +24,64 @@ namespace THO7AlgoritmTimerApplication
 
 			byte bytesPerPixel = GetBytesPerPixel(retval.PixelFormat);
 			bool alpha = hasAlpha(retval.PixelFormat);
+			int pixels = retval.Height * retval.Width;
 
 			unsafe
 			{
 				byte* start = (byte*)data.Scan0.ToPointer();
-				for (int i = 0; i < data.Stride; i++)
+				if (bytesPerPixel == 2)
 				{
-					if(alpha && i%bytesPerPixel == bytesPerPixel-1)
+					for (int i = 0; i < pixels; i++)
 					{
-						continue;
+						int current = 2 * i;
+						*(start + current + 0) ^= 0xff;
+						*(start + current + 1) ^= 0x7f;
 					}
-					for (int j = 0; j < data.Height; j++)
+				}
+				else if (bytesPerPixel == 3)
+				{
+					for (int i = 0; i < pixels; i++)
 					{
-						int current = (j*data.Stride)+i;
-						*(start+current) = (byte)(*(start+current)^0xff);
+						int current = 3 * i;
+						*(start + current + 0) ^= 0xff;
+						*(start + current + 1) ^= 0xff;
+						*(start + current + 2) ^= 0xff;
+					}
+				}
+				else if (bytesPerPixel == 4)
+				{
+					for (int i = 0; i < pixels; i++)
+					{
+						int current = 4 * i;
+						*(start + current + 0) ^= 0xff;
+						*(start + current + 1) ^= 0xff;
+						*(start + current + 2) ^= 0xff;
+					}
+				}
+				else if (bytesPerPixel == 6)
+				{
+					for (int i = 0; i < pixels; i++)
+					{
+						int current = 6 * i;
+						*(start + current + 0) ^= 0xff;
+						*(start + current + 1) ^= 0xff;
+						*(start + current + 2) ^= 0xff;
+						*(start + current + 3) ^= 0xff;
+						*(start + current + 4) ^= 0xff;
+						*(start + current + 5) ^= 0xff;
+					}
+				}
+				else if (bytesPerPixel == 8)
+				{
+					for (int i = 0; i < pixels; i++)
+					{
+						int current = 8 * i;
+						*(start + current + 0) ^= 0xff;
+						*(start + current + 1) ^= 0xff;
+						*(start + current + 2) ^= 0xff;
+						*(start + current + 3) ^= 0xff;
+						*(start + current + 4) ^= 0xff;
+						*(start + current + 5) ^= 0xff;
 					}
 				}
 			}
