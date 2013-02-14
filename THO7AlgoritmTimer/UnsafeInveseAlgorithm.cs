@@ -12,22 +12,22 @@ namespace THO7AlgoritmTimerApplication
 		public UnsafeInveseAlgorithm(String name)
 			: base(name)
 		{
-
+			//default constructor
 		}
 
 		public override Bitmap DoAlgorithm(Bitmap sourceImage)
 		{
-			Bitmap retval = new Bitmap(sourceImage);
+			Bitmap retval = new Bitmap(sourceImage); //make a working copy of the source image.
 
 			BitmapData rawData = retval.LockBits(new Rectangle(0, 0, retval.Width, retval.Height),
-				ImageLockMode.ReadWrite, retval.PixelFormat);
+				ImageLockMode.ReadWrite, retval.PixelFormat);//lock the image data in memory, allowing for both readin and writing.
 
-			byte bytesPerPixel = GetBytesPerPixel(retval.PixelFormat);
-			int pixels = retval.Height * retval.Width;
+			byte bytesPerPixel = GetBytesPerPixel(retval.PixelFormat); //determine how many bytes are used per pixel.
+			int pixels = retval.Height * retval.Width; //calculate the number of pixels in the image.
 
-			unsafe
+			unsafe //since this algorithm works with UNMANAGED pointers, the following code is considered unsafe.
 			{
-				byte* start = (byte*)rawData.Scan0.ToPointer();
+				byte* start = (byte*)rawData.Scan0.ToPointer(); //get a pointer to the beginning of the image data.
 				if (bytesPerPixel == 2)
 				{
 					for (int i = 0; i < pixels; i++)
@@ -52,9 +52,10 @@ namespace THO7AlgoritmTimerApplication
 					for (int i = 0; i < pixels; i++)
 					{
 						int current = 4 * i;
-						*(start + current + 0) ^= 0xff;
-						*(start + current + 1) ^= 0xff;
-						*(start + current + 2) ^= 0xff;
+						*(start + current + 0) ^= 0xff;//the algorithm has to skip the Alpha value of each pixel.
+						*(start + current + 1) ^= 0xff;//initially, this was done by stepping over each byte and skipping every 
+						*(start + current + 2) ^= 0xff;//byte n where n%Alpha byte position was skipped.
+						//usage of the modulo operator turned out to be so inefficient, that the code was replaced with this.
 					}
 				}
 				else if (bytesPerPixel == 6)
@@ -84,7 +85,7 @@ namespace THO7AlgoritmTimerApplication
 					}
 				}
 			}
-			retval.UnlockBits(rawData);
+			retval.UnlockBits(rawData); //undo the lock on the image data, preparing it to be returned.
 			
 			return retval;
 		}
