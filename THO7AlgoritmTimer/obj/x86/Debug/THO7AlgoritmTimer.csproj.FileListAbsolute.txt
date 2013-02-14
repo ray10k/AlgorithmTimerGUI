@@ -7,3 +7,5 @@ D:\Git\HOME\AlgorithmTimerGUI\THO7AlgoritmTimer\obj\x86\Debug\THO7AlgoritmTimerA
 D:\Git\HOME\AlgorithmTimerGUI\THO7AlgoritmTimer\obj\x86\Debug\THO7AlgoritmTimer.csproj.GenerateResource.Cache
 D:\Git\HOME\AlgorithmTimerGUI\THO7AlgoritmTimer\obj\x86\Debug\THO8AlgoritmTimer.exe
 D:\Git\HOME\AlgorithmTimerGUI\THO7AlgoritmTimer\obj\x86\Debug\THO8AlgoritmTimer.pdb
+D:\Git\HOME\AlgorithmTimerGUI\THO7AlgoritmTimer\bin\Debug\THO8AlgoritmTimer.exe.CodeAnalysisLog.xml
+D:\Git\HOME\AlgorithmTimerGUI\THO7AlgoritmTimer\bin\Debug\THO8AlgoritmTimer.exe.lastcodeanalysissucceeded

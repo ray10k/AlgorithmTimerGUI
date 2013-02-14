@@ -82,6 +82,7 @@ namespace THO7AlgoritmTimerApplication
 
 			return retval;
 		}
+
 		private byte getBytesPerPixel(PixelFormat p)
 		{
 			byte retval = 0;
