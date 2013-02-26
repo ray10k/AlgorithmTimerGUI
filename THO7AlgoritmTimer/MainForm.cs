@@ -29,6 +29,16 @@ namespace THO7AlgoritmTimerApplication
 			AlgorithmList.Add(new SafeInverseAlgorithm("safe Inverse"));
 			AlgorithmList.Add(new UnsafeInveseAlgorithm("UNSAFE inverse"));
 			AlgorithmList.Add(new SafeGreyAlgorithm("safe grey"));
+			AlgorithmList.Add(new MedianFilter("median filter, 1x1"));
+			AlgorithmList.Add(new MedianFilter("median filter, 3x3",1));
+			AlgorithmList.Add(new MedianFilter("median filter, 5x5", 2));
+			AlgorithmList.Add(new MedianFilter("median filter, 7x7", 3));
+			AlgorithmList.Add(new MedianFilter("median filter, 9x9", 4));
+			AlgorithmList.Add(new MedianFilter("median filter, 11x11", 5));
+			AlgorithmList.Add(new MedianFilter("median filter, 13x13", 6));
+			AlgorithmList.Add(new MedianFilter("median filter, 15x15", 7));
+			AlgorithmList.Add(new MedianFilter("median filter, 17x17", 8));
+			AlgorithmList.Add(new MedianFilter("median filter, 19x19", 9));
             //Insert new Algorithms here
             /*          ^
             *          /|\

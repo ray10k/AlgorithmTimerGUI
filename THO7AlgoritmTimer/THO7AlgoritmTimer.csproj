@@ -71,12 +71,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BlackAlgorithm.cs" />
+    <Compile Include="EditableImage.cs" />
+    <Compile Include="EditablePixel.cs" />
     <Compile Include="ImagePreviewForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ImagePreviewForm.Designer.cs">
       <DependentUpon>ImagePreviewForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MedianFilter.cs" />
     <Compile Include="SafeGreyAlgorithm.cs" />
     <Compile Include="SafeInverseAlgorithm.cs" />
     <Compile Include="RotateAlgorithm.cs" />
