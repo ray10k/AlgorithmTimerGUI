@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace THO7AlgoritmTimerApplication
 {
-	class EditableImage
+	class EditableImage //A class that contains an image in an easy-to-access format.
 	{
 		private int _height, _width;
 		private EditablePixel[] _pixels;
 
-		public EditableImage(Bitmap original)
+		public EditableImage(Bitmap original) //create an EditableImage with the same sizes and contents as the given bitmap.
 		{
 			this._height = original.Height;
 			this._width = original.Width;
@@ -40,7 +40,7 @@ namespace THO7AlgoritmTimerApplication
 
 			original.UnlockBits(rawData);
 		}
-		public EditableImage (int height, int width)
+		public EditableImage (int height, int width) //construct an EditableImage with certain dimensions, but without any pixel data.
 		{
 			this._height = height;
 			this._width = width;
@@ -95,7 +95,7 @@ namespace THO7AlgoritmTimerApplication
 
 		public Bitmap Bitmap //Here you have a good argument to be careful with the use of properties.
 		{					
-			get
+			get //returns a Bitmap representation of the current image.
 			{
 				Bitmap retval = new Bitmap(_width, _height, PixelFormat.Format32bppRgb);
 

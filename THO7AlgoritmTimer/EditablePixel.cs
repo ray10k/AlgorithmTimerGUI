@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace THO7AlgoritmTimerApplication
 {
-	class EditablePixel : IComparable
+	class EditablePixel : IComparable //a class to make pixel information more easily accessable. (UGLY)
 	{
 		private byte _red, _green, _blue;
 
@@ -17,7 +17,7 @@ namespace THO7AlgoritmTimerApplication
 			this._blue = blue;
 		}
 
-		public int CompareTo(Object obj)
+		public int CompareTo(Object obj)//implementation of IComparable, needed to be able to sort a list of EditablePixel objects.
 		{
 			if (obj is EditablePixel)
 			{
@@ -29,7 +29,7 @@ namespace THO7AlgoritmTimerApplication
 			}
 
 		}
-
+		//various properties to access the private members of the pixel, as well as some derived data.
 		public byte Avg
 		{
 			get { return (byte)((_red + _green + _blue) / 3); }

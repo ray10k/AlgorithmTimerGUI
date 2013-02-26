@@ -20,35 +20,34 @@ namespace THO7AlgoritmTimerApplication
 		{
 			Bitmap retval = new Bitmap(sourceImage);
 
-			EditableImage unedited = new EditableImage(retval);
-			EditableImage edited = new EditableImage(retval.Height,retval.Width);
+			EditableImage unedited = new EditableImage(retval); // Image with the original data; prior to application of the filter.
+			EditableImage edited = new EditableImage(retval.Height,retval.Width); //"blank" image with the same dimensions as the original, the image with the filter applied will be constructed in this.
 
 			int height = unedited.Height;
 			int width = unedited.Width;
-			int median = (_radius * _radius) /2;
 
 			for (int x = 0; x < width; x++)
 			{
 				for (int y = 0; y < height; y++)
-				{
-					List<EditablePixel> pixelArea = new List<EditablePixel>();
+				{ //for each pixel in the original image:
+					List<EditablePixel> pixelArea = new List<EditablePixel>(); //create an empty list of EditablePixel s.
 					for (int areaX = this._radius * -1; areaX <= this._radius; areaX++)
 					{
 						for (int areaY = this._radius * -1; areaY <= this._radius; areaY++)
-						{
-							EditablePixel p = unedited.GetPixel(x+areaX,y+areaY);
+						{// for each pixel in a square around the currently selected pixel:
+							EditablePixel p = unedited.GetPixel(x+areaX,y+areaY); //find the current pixel,
 							if (p != null)
 							{
-								pixelArea.Add(p);
+								pixelArea.Add(p);//add it to the list,
 							}
 						}
 					}
-					pixelArea.Sort();
-					edited.SetPixel(x,y,pixelArea[pixelArea.Count>>1]);
+					pixelArea.Sort(); //sort the list of pixels around the current pixel,
+					edited.SetPixel(x,y,pixelArea[pixelArea.Count>>1]); //take the middle value (x>>1 == x/2 for integers)
 				}
 			}
 
-			return edited.Bitmap;
+			return edited.Bitmap;//return the resulting image, as a bitmap.
 		}
 	}
 }
